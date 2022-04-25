@@ -1,14 +1,23 @@
 /target:library
-/out:Temp/Assembly-CSharp.dll
+/out:Temp/Cinemachine.dll
 /nowarn:0169
 /nowarn:0649
-/refout:Temp/Assembly-CSharp.dll.ref
+/refout:Temp/Cinemachine.dll.ref
 /deterministic
 /debug:portable
 /optimize+
 /nostdlib+
 /preferreduilang:en-US
 /langversion:8.0
+/reference:Library/ScriptAssemblies/Unity.Timeline.dll
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
+/reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+/reference:"C:/UnityProjects/3D RPG/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
+/reference:"C:/UnityProjects/3D RPG/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"
+/reference:"C:/UnityProjects/3D RPG/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/log4netPlastic.dll"
+/reference:"C:/UnityProjects/3D RPG/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/unityplastic.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.GraphViewModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.PackageManagerUIModule.dll"
@@ -198,18 +207,10 @@
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlDocument.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlSerializer.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
-/reference:Library/ScriptAssemblies/Cinemachine.dll
-/reference:Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.Rider.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.dll
-/reference:Library/ScriptAssemblies/Unity.VSCode.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
-/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
-/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
-/reference:Library/ScriptAssemblies/com.unity.cinemachine.editor.dll
+/define:CINEMACHINE_PHYSICS
+/define:CINEMACHINE_PHYSICS_2D
+/define:CINEMACHINE_TIMELINE
+/define:CINEMACHINE_UGUI
 /define:CSHARP_7_3_OR_NEWER
 /define:CSHARP_7_OR_LATER
 /define:DEBUG
@@ -316,24 +317,80 @@
 /define:UNITY_STANDALONE_WIN
 /define:UNITY_TEAM_LICENSE
 /define:USE_SEARCH_ENGINE_API
-Assets\Scripts\Cinematics\CinematicControlRemover.cs
-Assets\Scripts\Cinematics\CinematicTrigger.cs
-Assets\Scripts\Cinematics\FakePlayableDirector.cs
-Assets\Scripts\Combat\CombatTarget.cs
-Assets\Scripts\Combat\Fighter.cs
-Assets\Scripts\Control\AIController.cs
-Assets\Scripts\Control\PatrolPath.cs
-Assets\Scripts\Control\PlayerController.cs
-Assets\Scripts\Core\ActionScheduler.cs
-Assets\Scripts\Core\FollowCamera.cs
-Assets\Scripts\Core\Health.cs
-Assets\Scripts\Core\IAction.cs
-Assets\Scripts\Core\PersistentObjectsSpawner.cs
-Assets\Scripts\Movement\Mover.cs
-Assets\Scripts\Saving\ISaveable.cs
-Assets\Scripts\Saving\SaveableEntity.cs
-Assets\Scripts\Saving\SavingSystem.cs
-Assets\Scripts\Saving\SerializableVector3.cs
-Assets\Scripts\SceneManagement\Fader.cs
-Assets\Scripts\SceneManagement\Portal.cs
-Assets\Scripts\SceneManagement\SavingWrapper.cs
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\AssemblyInfo.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\Cinemachine3rdPersonAim.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineBlendListCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineBrain.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineCameraOffset.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineClearShot.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineCollider.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineConfiner.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineDollyCart.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineExternalCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineFollowZoom.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineFreeLook.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineMixingCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachinePath.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachinePipeline.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachinePixelPerfect.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineRecomposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineSmoothPath.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineStateDrivenCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineStoryboard.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineTargetGroup.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Behaviours\CinemachineVirtualCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\Cinemachine3rdPersonFollow.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineBasicMultiChannelPerlin.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineComposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineFramingTransposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineGroupComposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineHardLockToTarget.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineHardLookAt.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineOrbitalTransposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachinePOV.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineSameAsFollowTarget.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineTrackedDolly.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Components\CinemachineTransposer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\AxisState.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CameraState.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineBlend.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineBlenderSettings.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineComponentBase.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineCore.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineDebug.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineExtension.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineInputAxisDriver.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachinePathBase.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachinePropertyAttribute.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\CinemachineVirtualCameraBase.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\GaussianFilter.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\ICinemachineCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\ICinemachineComponent.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\LensSettings.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\NoiseSettings.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\Predictor.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\RuntimeUtility.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\SignalSourceAsset.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\SplineHelpers.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\TargetPositionCache.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\UnityVectorExtensions.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Core\UpdateTracker.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Experimental\CinemachineNewFreeLook.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Experimental\CinemachineNewVirtualCamera.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Helpers\CinemachineInputProvider.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Helpers\CinemachineTouchInputMapper.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Helpers\CinemachineTriggerAction.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Helpers\GroupWeightManipulator.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineCollisionImpulseSource.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineFixedSignal.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineImpulseDefinition.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineImpulseListener.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineImpulseManager.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineImpulseSource.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Impulse\CinemachineIndependentImpulseListener.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\PostProcessing\CinemachinePostProcessing.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\PostProcessing\CinemachineVolumeSettings.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Timeline\CinemachineMixer.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Timeline\CinemachineShot.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Timeline\CinemachineShotPlayable.cs"
+"C:\UnityProjects\3D RPG\Library\PackageCache\com.unity.cinemachine@2.6.11\Runtime\Timeline\CinemachineTrack.cs"

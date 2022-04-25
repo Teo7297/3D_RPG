@@ -2,6 +2,7 @@ using RPG.Movement;
 using UnityEngine;
 
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
@@ -18,12 +19,18 @@ namespace RPG.Combat
         [SerializeField]
         private float weaponDamage = 5f;
 
+        [SerializeField]
+        private Transform RightHandTransform;
+        [SerializeField]
+        private Weapon weapon;
+
         private Health target;
         private Mover mover;
 
         private void Start()
         {
             mover = GetComponent<Mover>();
+            SpawnWeapon();
         }
 
         private void Update()
@@ -43,6 +50,32 @@ namespace RPG.Combat
                 mover.Cancel();
                 AttackBehaviour();
             }
+        }
+
+        public bool CanAttack(GameObject combatTarget)
+        {
+            if (combatTarget is null) { return false; }
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
+
+        public void Attack(GameObject combatTarget)
+        {
+            GetComponent<ActionScheduler>().StartAction(this);
+            target = combatTarget.GetComponent<Health>();
+        }
+
+        public void Cancel()
+        {
+            StopAttack();
+            target = null;
+        }
+
+        private void SpawnWeapon()
+        {
+            if (weapon == null) { return; }
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(RightHandTransform, animator);
         }
 
         private void AttackBehaviour()
@@ -72,24 +105,6 @@ namespace RPG.Combat
             return Vector3.Distance(transform.position, target.transform.position) <= weaponRange;
         }
 
-        public bool CanAttack(GameObject combatTarget)
-        {
-            if (combatTarget is null) { return false; }
-            Health targetToTest = combatTarget.GetComponent<Health>();
-            return targetToTest != null && !targetToTest.IsDead();
-        }
-
-        public void Attack(GameObject combatTarget)
-        {
-            GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.GetComponent<Health>();
-        }
-
-        public void Cancel()
-        {
-            StopAttack();
-            target = null;
-        }
 
         private void StopAttack()
         {

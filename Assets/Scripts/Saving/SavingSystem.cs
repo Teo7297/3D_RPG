@@ -14,6 +14,8 @@ namespace RPG.Saving
 
         #region publicMethods
 
+        //* This needs to be a coroutine because we want to load the scene and THEN restore its state,
+        //* To run code after the scene has been loaded we need to use the coroutine and add code after the LoadSceneAsync method
         public IEnumerator LoadLastScene(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
