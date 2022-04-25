@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: ffcabe45-2321-4667-87e9-35715d3aa4c9
+      objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -308,6 +312,10 @@ PrefabInstance:
     - target: {fileID: 814005897284077763, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 65042a99-a018-44a1-b372-003b8bf0e368
       objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
@@ -479,6 +487,10 @@ PrefabInstance:
     - target: {fileID: 814005897284077763, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: e0531729-d75d-468e-b176-8b44895663c3
       objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
@@ -690,6 +702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 46cd41cc-e3a1-48ec-962a-b7ad92ba890a
+      objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -755,6 +771,10 @@ PrefabInstance:
     - target: {fileID: 814005897284077763, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: b23b4c0f-91f4-4c64-a846-efe0fa745ce0
       objectReference: {fileID: 0}
     - target: {fileID: 4739407053622552920, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: weaponDamage
@@ -1084,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 866f2773-0c8e-43a3-969b-34b0bd3fab9b
+      objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1377,6 +1401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 0d213e35-2cef-4e93-9c96-9c2d40a02fa1
+      objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1438,6 +1466,10 @@ PrefabInstance:
     - target: {fileID: 814005897284077763, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_Name
       value: Enemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: c85e367a-d0a2-46f3-89e2-ed34c7773e1f
       objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
@@ -1607,6 +1639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: d383f6d1-1382-4093-af1b-2d143a8e0bc1
+      objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1668,6 +1704,10 @@ PrefabInstance:
     - target: {fileID: 814005897284077763, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_Name
       value: Enemy (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683041159405239160, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 5cdaacfd-d5ee-41f5-bb29-7e66d85110f8
       objectReference: {fileID: 0}
     - target: {fileID: 8404482534576222959, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: m_RootOrder
@@ -2010,6 +2050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6803803003874987871, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 1f0b23c3-79da-4e63-9980-02b0ad71aad6
+      objectReference: {fileID: 0}
     - target: {fileID: 6988897525551897057, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
       propertyPath: m_Name
       value: Core

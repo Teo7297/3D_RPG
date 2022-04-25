@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField]
         private float maxSpeed = 5.66f;
@@ -58,6 +59,22 @@ namespace RPG.Movement
 
             //Pass the value to the animator
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+        }
+
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        //! This is called after awake but before start
+        public void RestoreState(object state)
+        {
+            // We could use a cast, but in case of error an exception would be thrown..
+            SerializableVector3 position = (SerializableVector3)state;
+            GetComponent<NavMeshAgent>().Warp(position.ToVector());
+
+            // In case we need to cast and we are not sure of the object type we should use the as statement, in case of error it returns null:
+            //* SerializableVector3 position = state as SerializableVector3;
         }
     }
 }
