@@ -63,18 +63,39 @@ namespace RPG.Movement
 
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["position"] = new SerializableVector3(transform.position);
+            data["rotation"] = new SerializableVector3(transform.eulerAngles);
+            return data;
         }
 
         //! This is called after awake but before start
         public void RestoreState(object state)
         {
             // We could use a cast, but in case of error an exception would be thrown..
-            SerializableVector3 position = (SerializableVector3)state;
-            GetComponent<NavMeshAgent>().Warp(position.ToVector());
+            //* SerializableVector3 position = (SerializableVector3)state;
 
             // In case we need to cast and we are not sure of the object type we should use the as statement, in case of error it returns null:
             //* SerializableVector3 position = state as SerializableVector3;
+
+            Dictionary<string, object> data = (Dictionary<string, object>)state;
+            var position = (SerializableVector3)data["position"];
+            var rotation = (SerializableVector3)data["rotation"];
+
+            GetComponent<NavMeshAgent>().Warp(position.ToVector());
+            transform.eulerAngles = rotation.ToVector();
         }
+
+        //*We can also use a struct to save multiple values:
+        // [System.Serializable]
+        // struct MoverSaveData
+        // {
+        //     public SerializableVector3 position;
+        //     public SerializableVector3 rotation;
+        // }
+        // MoverSaveData data = new MoverSaveData();
+        // data.position = ....transform.position;
+        // ..rotation..
+        // return data;
     }
 }
