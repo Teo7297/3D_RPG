@@ -57,6 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &738305038738744606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 738305038738330128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8447785729470909426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,6 +117,14 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3817172070062449322, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 7397b0b8b39e41b448e705666ca89b6b, type: 2}
+    - target: {fileID: 3817172070062449322, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: RightHandTransform
+      value: 
+      objectReference: {fileID: 738305038738744606}
     - target: {fileID: 4292511308059971234, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: healthPoints
       value: 40
@@ -179,3 +192,4 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDwellTime: 3
+  patrolSpeedFraction: 0.2

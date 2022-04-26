@@ -10,14 +10,8 @@ namespace RPG.Combat
     {
 
         [SerializeField]
-        private float weaponRange = 2f;
-
-        [SerializeField]
         private float timeBetweenAttacks = 1f;
         private float timeSinceLastAttack = Mathf.Infinity;
-
-        [SerializeField]
-        private float weaponDamage = 5f;
 
         [SerializeField]
         private Transform RightHandTransform;
@@ -97,14 +91,13 @@ namespace RPG.Combat
         //! This is an animation event, called from the attack animation
         void Hit()
         {
-            target?.TakeDamage(weaponDamage);
+            target?.TakeDamage(weapon.WeaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) <= weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) <= weapon.WeaponRange;
         }
-
 
         private void StopAttack()
         {
