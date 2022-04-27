@@ -19,10 +19,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 913732738164536156, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1618729015348785655, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 30da3b53d32849744983c500ba3426d9, type: 2}
+    - target: {fileID: 1618729015348785655, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
+      propertyPath: defaultWeaponName
+      value: EnemyBow
+      objectReference: {fileID: 0}
     - target: {fileID: 1618729015348785655, guid: 518894b457d2be642a6e87e789cf3b1b, type: 3}
       propertyPath: leftHandTransform
       value: 
