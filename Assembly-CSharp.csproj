@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
-     <Compile Include="Assets\Scripts\Core\Health.cs" />
+     <Compile Include="Assets\Scripts\Attributes\Health.cs" />
      <Compile Include="Assets\Scripts\Combat\WeaponPickup.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatTarget.cs" />
      <Compile Include="Assets\Scripts\Control\AIController.cs" />
