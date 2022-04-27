@@ -1,3 +1,5 @@
+using System;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -13,12 +15,21 @@ namespace RPG.Combat
         private float weaponDamage = 5f;
         [SerializeField]
         private float weaponRange = 2f;
+        [SerializeField]
+        private bool isRightHanded = true;
+        [SerializeField]
+        private Projectile projectile;
 
-        public void Spawn(Transform handTransform, Animator animator)
+        const string weaponName = "Weapon";
+
+        public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestroyOldWeapon(rightHand, leftHand);
             if (equippedWeaponPrefab != null)
             {
-                Instantiate(equippedWeaponPrefab, handTransform);
+                Transform handTransform = GetHandTransform(rightHand, leftHand);
+                var weapon = Instantiate(equippedWeaponPrefab, handTransform);
+                weapon.name = weaponName;
             }
             if (animatorOverrideController != null)
             {
@@ -26,8 +37,40 @@ namespace RPG.Combat
             }
         }
 
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            var oldWeapon = rightHand.Find(weaponName);
+            if(oldWeapon is null)
+                oldWeapon = leftHand.Find(weaponName);
+            if(oldWeapon is null) {return;}
+
+            oldWeapon.name = "DESTROYING";
+            Destroy(oldWeapon.gameObject);
+        }
+
+        public bool HasProjectile()
+        {
+            return !(projectile is null);
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        {
+            var projectilInstance = Instantiate(
+                projectile,
+                GetHandTransform(rightHand, leftHand).position,
+                Quaternion.identity
+            );
+
+            projectilInstance.SetTarget(target, weaponDamage);
+        }
+
         public float WeaponDamage { get => weaponDamage; }
 
         public float WeaponRange { get => weaponRange; }
+
+        private Transform GetHandTransform(Transform rightHand, Transform leftHand)
+        {
+            return isRightHanded ? rightHand : leftHand;
+        }
     }
 }

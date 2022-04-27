@@ -36,29 +36,33 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Scripts\Core\Health.cs" />
+     <Compile Include="Assets\Scripts\Combat\WeaponPickup.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatTarget.cs" />
+     <Compile Include="Assets\Scripts\Control\AIController.cs" />
+     <Compile Include="Assets\Scripts\Saving\ISaveable.cs" />
+     <Compile Include="Assets\Scripts\Saving\SerializableVector3.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SavingWrapper.cs" />
      <Compile Include="Assets\Scripts\Core\FollowCamera.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Portal.cs" />
+     <Compile Include="Assets\Scripts\Cinematics\FakePlayableDirector.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Fader.cs" />
      <Compile Include="Assets\Scripts\Control\PatrolPath.cs" />
      <Compile Include="Assets\Scripts\Core\PersistentObjectsSpawner.cs" />
+     <Compile Include="Assets\Scripts\Cinematics\CinematicControlRemover.cs" />
+     <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
+     <Compile Include="Assets\Scripts\Core\ActionScheduler.cs" />
+     <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
      <Compile Include="Assets\Scripts\Combat\Fighter.cs" />
      <Compile Include="Assets\Scripts\Control\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Saving\SaveableEntity.cs" />
      <Compile Include="Assets\Scripts\Cinematics\CinematicTrigger.cs" />
-     <Compile Include="Assets\Scripts\Core\IAction.cs" />
-     <Compile Include="Assets\Scripts\Control\AIController.cs" />
-     <Compile Include="Assets\Scripts\Saving\ISaveable.cs" />
-     <Compile Include="Assets\Scripts\Saving\SerializableVector3.cs" />
-     <Compile Include="Assets\Scripts\Cinematics\FakePlayableDirector.cs" />
-     <Compile Include="Assets\Scripts\Cinematics\CinematicControlRemover.cs" />
-     <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
-     <Compile Include="Assets\Scripts\Core\ActionScheduler.cs" />
      <Compile Include="Assets\Scripts\Combat\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Combat\DestroyOnImpact.cs" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
+     <None Include="Assets\Asset Packs\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\Asset Packs\Fantasy Skybox FREE\Readme.txt" />
      <None Include="Assets\Asset Packs\Animations by Explosive\README - Usage Rights for these assets 1.txt" />
      <None Include="Assets\Asset Packs\Fantasy Skybox FREE\ReleaseNotes.txt" />
@@ -283,6 +287,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="RainbowCore">
+        <HintPath>C:\UnityProjects\3D RPG\Assets\Plugins\RainbowAssets\!Core\Assemblies\RainbowCore.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.30f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

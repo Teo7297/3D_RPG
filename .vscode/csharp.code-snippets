@@ -1,0 +1,16 @@
+{
+    "namespace": {
+        "prefix": "namespace",
+        "body": [
+            "using UnityEngine;",
+            "",
+            "namespace RPG.${TM_DIRECTORY/.*[\\\\|\\/]+(.*)/$1/}",
+            "{",
+            "    public class $TM_FILENAME_BASE : MonoBehaviour",
+            "    {",
+            "        $0",
+            "    }",
+            "}"
+        ]
+    }
+}

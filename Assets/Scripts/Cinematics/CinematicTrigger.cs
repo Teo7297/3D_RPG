@@ -7,6 +7,7 @@ namespace RPG.Cinematics
 {
     public class CinematicTrigger : MonoBehaviour
     {
+        [SerializeField]
         private bool alreadyTriggered = false;
         private void OnTriggerEnter(Collider other)
         {

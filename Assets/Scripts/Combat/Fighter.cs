@@ -14,9 +14,13 @@ namespace RPG.Combat
         private float timeSinceLastAttack = Mathf.Infinity;
 
         [SerializeField]
-        private Transform RightHandTransform;
+        private Transform rightHandTransform;
         [SerializeField]
-        private Weapon weapon;
+        private Transform leftHandTransform;
+
+        [SerializeField]
+        private Weapon defaultWeapon;
+        private Weapon currentWeapon;
 
         private Health target;
         private Mover mover;
@@ -24,7 +28,7 @@ namespace RPG.Combat
         private void Start()
         {
             mover = GetComponent<Mover>();
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -65,11 +69,11 @@ namespace RPG.Combat
             target = null;
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null) { return; }
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(RightHandTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         private void AttackBehaviour()
@@ -89,14 +93,23 @@ namespace RPG.Combat
         }
 
         //! This is an animation event, called from the attack animation
-        void Hit()
+        private void Hit()
         {
-            target?.TakeDamage(weapon.WeaponDamage);
+            target?.TakeDamage(currentWeapon.WeaponDamage);
+        }
+        //! This is an animation event, called from the attack animation
+        private void Shoot()
+        {
+            if (target is null) { return; }
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) <= weapon.WeaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.WeaponRange;
         }
 
         private void StopAttack()
