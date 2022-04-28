@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935222672852474831}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6610242604565079162}
@@ -51,7 +51,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -4829,7 +4829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304343398788598712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.058}
+  m_LocalPosition: {x: 0, y: 0, z: -0.34000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6610242604565079162}
@@ -5002,7 +5002,7 @@ MonoBehaviour:
   lifeTime: 1
   shouldChaseTarget: 0
   hitEffect: {fileID: 0}
-  head: {fileID: 1964034253508637275, guid: 8b800b38fb450a440a6f658b7ffe36f5, type: 3}
+  raycastDistance: 1
 --- !u!136 &8270289382417237437
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5016,7 +5016,7 @@ CapsuleCollider:
   m_Radius: 0.06
   m_Height: 0.73
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.43}
+  m_Center: {x: 0, y: 0, z: 0.05}
 --- !u!1001 &2985967753837660343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5042,7 +5042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371719986922101613, guid: 8b800b38fb450a440a6f658b7ffe36f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.411
       objectReference: {fileID: 0}
     - target: {fileID: 3371719986922101613, guid: 8b800b38fb450a440a6f658b7ffe36f5, type: 3}
       propertyPath: m_LocalRotation.w

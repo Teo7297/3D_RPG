@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -14,7 +15,7 @@ namespace RPG.Attributes
 
         private void Start()
         {
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public bool IsDead()
@@ -22,10 +23,18 @@ namespace RPG.Attributes
             return isDead;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             CheckIfShouldDie();
+            if (IsDead())
+                AwardExperience(instigator);
+        }
+
+
+        public float GetPercentage()
+        {
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         private void CheckIfShouldDie()
@@ -43,6 +52,14 @@ namespace RPG.Attributes
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
             GetComponent<CapsuleCollider>().enabled = false;
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            var experience = instigator.GetComponent<Experience>();
+            if (experience is null) { return; }
+
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
         }
 
         public object CaptureState()

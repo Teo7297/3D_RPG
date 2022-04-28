@@ -120,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712337458198532008, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2420493336230433490, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: healthPoints

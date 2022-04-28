@@ -77,6 +77,11 @@ namespace RPG.Combat
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
+        public Health GetTarget()
+        {
+            return target;
+        }
+
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
@@ -96,7 +101,7 @@ namespace RPG.Combat
         //! This is an animation event, called from the attack animation
         private void Hit()
         {
-            target?.TakeDamage(currentWeapon.WeaponDamage);
+            target?.TakeDamage(gameObject, currentWeapon.WeaponDamage);
         }
         //! This is an animation event, called from the attack animation
         private void Shoot()
@@ -104,7 +109,7 @@ namespace RPG.Combat
             if (target is null) { return; }
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
             }
         }
 

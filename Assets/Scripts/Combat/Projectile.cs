@@ -18,25 +18,39 @@ namespace RPG.Combat
 
         private float damage;
 
+        private GameObject instigator;
+        private Vector3 direction;
+        private Vector3 previousPosition;
+
         private void Start()
         {
             if (target is null) { return; }
             transform.LookAt(GetAimPosition());
+
+            direction = (GetAimPosition() - transform.position).normalized;
+            previousPosition = transform.position;
+
+            Destroy(gameObject, lifeTime);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            lifeTime -= Time.deltaTime;
-            if (lifeTime <= 0f) { Destroy(gameObject); }
             if (target is null) { return; }
             if (shouldChaseTarget && !target.IsDead())
                 transform.LookAt(GetAimPosition());
+
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            
+            CheckHit();
+            
+            previousPosition = transform.position;
         }
 
-        public void SetTarget(Health target, float damage)
+
+        public void SetTarget(Health target, GameObject instigator, float damage)
         {
             this.target = target;
+            this.instigator = instigator;
             this.damage = damage;
         }
 
@@ -53,11 +67,22 @@ namespace RPG.Combat
                 position.z);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void CheckHit()
         {
-            if (other.GetComponent<Health>() != target) { return; }
+            RaycastHit hit;
+            if (Physics.Raycast(previousPosition, direction, out hit, Vector3.Distance(transform.position, previousPosition)))
+            {
+                CheckTargetValidity(hit);
+            }
+        }
 
-            target.TakeDamage(damage);
+        private void CheckTargetValidity(RaycastHit hit)
+        {
+            if (hit.collider.GetComponent<Health>() != target) { return; }
+
+            transform.position = hit.point;
+
+            target.TakeDamage(instigator, damage);
 
             DestroyHead();
 
@@ -82,6 +107,7 @@ namespace RPG.Combat
             GetComponent<CapsuleCollider>().enabled = false;
             transform.parent = target.transform;
             target = null;
+
         }
     }
 }

@@ -125,6 +125,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712337458198532008, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 712337458198532008, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3817172070062449322, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
@@ -187,6 +191,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 116574667226593565, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
   m_PrefabInstance: {fileID: 7968829720788804191}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &660753591077826391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216400953070821742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88f0908a6d88d34abb488044719d050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
 --- !u!114 &3712036079098196160
 MonoBehaviour:
   m_ObjectHideFlags: 0

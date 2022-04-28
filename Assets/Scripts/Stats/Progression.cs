@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -8,16 +10,46 @@ namespace RPG.Stats
         [SerializeField]
         private ProgressionCharacterClass[] progressionCharacterClasses;
 
-        public float GetHealth(CharacterClass characterClass, int level)
+        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable;
+
+        public float GetStat(Stat stat, CharacterClass characterClass, int level)
         {
+            BuildLookup();
+            // foreach (var progressionClass in progressionCharacterClasses)
+            // {
+            //     if (progressionClass.CharacterClass != characterClass) { continue; }
+
+            //     foreach (var progressionStat in progressionClass.Stats)
+            //     {
+            //         if (progressionStat.Stat != stat) { continue; }
+            //         if (progressionStat.Levels.Length < level) { continue; }
+
+            //         return progressionStat.Levels[level - 1];
+            //     }
+            // }
+            // return 0f;
+            float[] levels = lookupTable[characterClass][stat];
+            if (levels.Length < level) return 0f;
+            return levels[level - 1];
+        }
+
+        private void BuildLookup()
+        {
+            if (lookupTable != null) { return; }
+
+            lookupTable = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
+
             foreach (var progressionClass in progressionCharacterClasses)
             {
-                if (progressionClass.CharacterClass == characterClass)
+                var statLookupTable = new Dictionary<Stat, float[]>();
+
+                foreach (var progressionStat in progressionClass.Stats)
                 {
-                    return progressionClass.Health[level - 1];
+                    statLookupTable[progressionStat.Stat] = progressionStat.Levels;
                 }
+
+                lookupTable[progressionClass.CharacterClass] = statLookupTable;
             }
-            return 0f;
         }
 
         [System.Serializable]
@@ -26,10 +58,22 @@ namespace RPG.Stats
             [SerializeField]
             private CharacterClass characterClass;
             [SerializeField]
-            private float[] health;
+            private ProgressionStat[] stats;
 
-            internal float[] Health { get => health; }
             internal CharacterClass CharacterClass { get => characterClass; }
+            internal ProgressionStat[] Stats { get => stats; }
+        }
+
+        [System.Serializable]
+        class ProgressionStat
+        {
+            [SerializeField]
+            private Stat stat;
+            [SerializeField]
+            private float[] levels;
+
+            internal float[] Levels { get => levels; }
+            internal Stat Stat { get => stat; }
         }
     }
 }
