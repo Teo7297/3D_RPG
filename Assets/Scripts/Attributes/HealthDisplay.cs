@@ -15,6 +15,7 @@ namespace RPG.Attributes
 
         private void Update()
         {
+            print(health.GetPercentage());
             GetComponent<TextMeshProUGUI>().SetText(
                 String.Format("{0:0}%", health.GetPercentage()) // :0 means 0 decimal digits
             );

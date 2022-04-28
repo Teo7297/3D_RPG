@@ -4999,10 +4999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  lifeTime: 1
+  lifeTime: 3
   shouldChaseTarget: 0
   hitEffect: {fileID: 0}
-  raycastDistance: 1
 --- !u!136 &8270289382417237437
 CapsuleCollider:
   m_ObjectHideFlags: 0

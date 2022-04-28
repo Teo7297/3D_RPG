@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: weaponOverrideController
       value: 
       objectReference: {fileID: 22100000, guid: 9e3102414e1c51d4ea990d28672dfff9, type: 2}
+    - target: {fileID: 6362884182427623410, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8760252556724893870, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: characterClass
       value: 0
@@ -191,19 +195,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 116574667226593565, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
   m_PrefabInstance: {fileID: 7968829720788804191}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &660753591077826391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216400953070821742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88f0908a6d88d34abb488044719d050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experiencePoints: 0
 --- !u!114 &3712036079098196160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +223,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397755fca4f60df449e929605170b069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4605397821752299526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216400953070821742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ed83c78a8b93845a8a4e2b27943976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0

@@ -34,7 +34,7 @@ namespace RPG.Attributes
 
         public float GetPercentage()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health)) * 100;
         }
 
         private void CheckIfShouldDie()
@@ -59,7 +59,7 @@ namespace RPG.Attributes
             var experience = instigator.GetComponent<Experience>();
             if (experience is null) { return; }
 
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.Experience));
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public object CaptureState()

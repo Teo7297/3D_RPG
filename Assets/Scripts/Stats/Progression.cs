@@ -1,79 +1,58 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections.Generic;
+using System;
 namespace RPG.Stats
 {
     [CreateAssetMenu(fileName = "Progression", menuName = "Stats/New Progression", order = 0)]
     public class Progression : ScriptableObject
     {
-        [SerializeField]
-        private ProgressionCharacterClass[] progressionCharacterClasses;
-
-        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable;
-
+        [SerializeField] ProgressionCharacterClass[] characterClasses = null;
+        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable = null;
+        
         public float GetStat(Stat stat, CharacterClass characterClass, int level)
         {
             BuildLookup();
-            // foreach (var progressionClass in progressionCharacterClasses)
-            // {
-            //     if (progressionClass.CharacterClass != characterClass) { continue; }
-
-            //     foreach (var progressionStat in progressionClass.Stats)
-            //     {
-            //         if (progressionStat.Stat != stat) { continue; }
-            //         if (progressionStat.Levels.Length < level) { continue; }
-
-            //         return progressionStat.Levels[level - 1];
-            //     }
-            // }
-            // return 0f;
             float[] levels = lookupTable[characterClass][stat];
-            if (levels.Length < level) return 0f;
+            if (levels.Length < level)
+            {
+                return 0;
+            }
             return levels[level - 1];
+        }
+
+        public int GetLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookup();
+
+            float[] levels = lookupTable[characterClass][stat];
+            return levels.Length;
         }
 
         private void BuildLookup()
         {
-            if (lookupTable != null) { return; }
-
+            if (lookupTable != null) return;
             lookupTable = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
-
-            foreach (var progressionClass in progressionCharacterClasses)
+            foreach (ProgressionCharacterClass progressionClass in characterClasses)
             {
                 var statLookupTable = new Dictionary<Stat, float[]>();
-
-                foreach (var progressionStat in progressionClass.Stats)
+                foreach (ProgressionStat progressionStat in progressionClass.stats)
                 {
-                    statLookupTable[progressionStat.Stat] = progressionStat.Levels;
+                    statLookupTable[progressionStat.stat] = progressionStat.levels;
                 }
-
-                lookupTable[progressionClass.CharacterClass] = statLookupTable;
+                lookupTable[progressionClass.characterClass] = statLookupTable;
             }
         }
-
         [System.Serializable]
         class ProgressionCharacterClass
         {
-            [SerializeField]
-            private CharacterClass characterClass;
-            [SerializeField]
-            private ProgressionStat[] stats;
-
-            internal CharacterClass CharacterClass { get => characterClass; }
-            internal ProgressionStat[] Stats { get => stats; }
+            public CharacterClass characterClass;
+            public ProgressionStat[] stats;
         }
-
         [System.Serializable]
         class ProgressionStat
         {
-            [SerializeField]
-            private Stat stat;
-            [SerializeField]
-            private float[] levels;
-
-            internal float[] Levels { get => levels; }
-            internal Stat Stat { get => stat; }
+            public Stat stat;
+            public float[] levels;
         }
     }
 }

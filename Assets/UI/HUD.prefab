@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 8852846085694094017}
   - component: {fileID: 1519221544999903469}
   - component: {fileID: 841745058464157677}
-  - component: {fileID: 1243761232516964191}
+  - component: {fileID: 5560925032669716515}
   m_Layer: 5
   m_Name: ExperienceValue
   m_TagString: Untagged
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1243761232516964191
+--- !u!114 &5560925032669716515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5648312138240992110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0cf599f2302181449002134e3662b03, type: 3}
+  m_Script: {fileID: 11500000, guid: f9876418f2d446047814014ad175ac7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7563760709790492928
