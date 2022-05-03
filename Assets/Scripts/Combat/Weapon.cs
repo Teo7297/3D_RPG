@@ -13,6 +13,8 @@ namespace RPG.Combat
         [SerializeField]
         private float weaponDamage = 5f;
         [SerializeField]
+        private float percentageBonus = 0f;
+        [SerializeField]
         private float weaponRange = 2f;
         [SerializeField]
         private bool isRightHanded = true;
@@ -42,6 +44,28 @@ namespace RPG.Combat
             }
         }
 
+        public bool HasProjectile()
+        {
+            return !(projectile is null);
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
+        {
+            var projectilInstance = Instantiate(
+                projectile,
+                GetHandTransform(rightHand, leftHand).position,
+                Quaternion.identity
+            );
+
+            projectilInstance.SetTarget(target, instigator, calculatedDamage);
+        }
+
+        public float WeaponDamage { get => weaponDamage; }
+
+        public float WeaponRange { get => weaponRange; }
+
+        public float PercentageBonus { get => percentageBonus; }
+
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
         {
             var oldWeapon = rightHand.Find(weaponName);
@@ -52,26 +76,6 @@ namespace RPG.Combat
             oldWeapon.name = "DESTROYING";
             Destroy(oldWeapon.gameObject);
         }
-
-        public bool HasProjectile()
-        {
-            return !(projectile is null);
-        }
-
-        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
-        {
-            var projectilInstance = Instantiate(
-                projectile,
-                GetHandTransform(rightHand, leftHand).position,
-                Quaternion.identity
-            );
-
-            projectilInstance.SetTarget(target, instigator, weaponDamage);
-        }
-
-        public float WeaponDamage { get => weaponDamage; }
-
-        public float WeaponRange { get => weaponRange; }
 
         private Transform GetHandTransform(Transform rightHand, Transform leftHand)
         {

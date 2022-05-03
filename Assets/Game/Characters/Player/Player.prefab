@@ -172,8 +172,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760252556724893870, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: levelUpEffect
+      value: 
+      objectReference: {fileID: 3490968558235176086, guid: e03816b0a72d55c4da4e4bef5e07f692, type: 3}
+    - target: {fileID: 8760252556724893870, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: characterClass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760252556724893870, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9112891260972729137, guid: b9d0722e1fbc8b548806185a1cb66702, type: 3}
       propertyPath: m_Name
@@ -211,18 +219,6 @@ MonoBehaviour:
   rightHandTransform: {fileID: 7566311104896612468}
   leftHandTransform: {fileID: 7566311104896669724}
   defaultWeapon: {fileID: 11400000, guid: 7397b0b8b39e41b448e705666ca89b6b, type: 2}
---- !u!114 &5993193271206440689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216400953070821742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 397755fca4f60df449e929605170b069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4605397821752299526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +232,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experiencePoints: 0
+--- !u!114 &5993193271206440689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216400953070821742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397755fca4f60df449e929605170b069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

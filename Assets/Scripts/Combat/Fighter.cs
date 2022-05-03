@@ -3,10 +3,14 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Attributes;
+using RPG.Stats;
+using System.Collections.Generic;
+using GameDevTV.Utils;
+using System;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
 
         [SerializeField]
@@ -20,16 +24,26 @@ namespace RPG.Combat
 
         [SerializeField]
         private Weapon defaultWeapon;
-        private Weapon currentWeapon;
+        private LazyValue<Weapon> currentWeapon;
 
         private Health target;
         private Mover mover;
 
+        private void Awake()
+        {
+            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            mover = GetComponent<Mover>();
+        }
+
+        private Weapon SetupDefaultWeapon()
+        {
+            AttachWeapon(defaultWeapon);
+            return defaultWeapon;
+        }
+
         private void Start()
         {
-            mover = GetComponent<Mover>();
-            if (currentWeapon == null)
-                EquipWeapon(defaultWeapon);
+            currentWeapon.ForceInit();
         }
 
         private void Update()
@@ -72,7 +86,12 @@ namespace RPG.Combat
 
         public void EquipWeapon(Weapon weapon)
         {
-            currentWeapon = weapon;
+            currentWeapon.value = weapon;
+            AttachWeapon(weapon);
+        }
+
+        private void AttachWeapon(Weapon weapon)
+        {
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
@@ -80,6 +99,34 @@ namespace RPG.Combat
         public Health GetTarget()
         {
             return target;
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.value.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            var weaponName = (string)state;
+            var w = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(w);
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.value.WeaponDamage;
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.value.PercentageBonus;
+            }
         }
 
         private void AttackBehaviour()
@@ -101,21 +148,21 @@ namespace RPG.Combat
         //! This is an animation event, called from the attack animation
         private void Hit()
         {
-            target?.TakeDamage(gameObject, currentWeapon.WeaponDamage);
+            target?.TakeDamage(gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
         }
         //! This is an animation event, called from the attack animation
         private void Shoot()
         {
             if (target is null) { return; }
-            if (currentWeapon.HasProjectile())
+            if (currentWeapon.value.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+                currentWeapon.value.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
             }
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.WeaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) <= currentWeapon.value.WeaponRange;
         }
 
         private void StopAttack()
@@ -123,18 +170,5 @@ namespace RPG.Combat
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
-
-        public object CaptureState()
-        {
-            return currentWeapon.name;
-        }
-
-        public void RestoreState(object state)
-        {
-            var weaponName = (string)state;
-            var w = Resources.Load<Weapon>(weaponName);
-            EquipWeapon(w);
-        }
     }
-
 }

@@ -24,7 +24,7 @@ namespace RPG.Combat
             {
                 Health health = fighter.GetTarget();
                 GetComponent<TextMeshProUGUI>().SetText(
-                    String.Format("{0:0}%", health.GetPercentage()) // :0 means 0 decimal digits
+                    String.Format("{0:0}/{1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints()) // :0 means 0 decimal digits
                 );
             }
         }

@@ -14,36 +14,22 @@ namespace RPG.Movement
 
         private NavMeshAgent navMeshAgent;
         private Health health;
+        private Animator animator;
+        private ActionScheduler actionScheduler;
 
-        private void Start()
+        private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             health = GetComponent<Health>();
+            animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
-        void Update()
+
+        private void Update()
         {
             navMeshAgent.enabled = !health.IsDead();
 
             UpdateAnimator();
-        }
-
-        public void StartMoveAction(Vector3 destination, float speedFraction)
-        {
-            //We cancel the attack when we start moving
-            GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(destination, speedFraction);
-        }
-
-        public void MoveTo(Vector3 destination, float speedFraction)
-        {
-            navMeshAgent.destination = destination;
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-            navMeshAgent.isStopped = false;
-        }
-
-        public void Cancel()
-        {
-            navMeshAgent.isStopped = true;
         }
 
         private void UpdateAnimator()
@@ -58,7 +44,26 @@ namespace RPG.Movement
             float speed = localVelocity.z;
 
             //Pass the value to the animator
-            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            animator.SetFloat("forwardSpeed", speed);
+        }
+
+        public void StartMoveAction(Vector3 destination, float speedFraction)
+        {
+            //We cancel the attack when we start moving
+            actionScheduler.StartAction(this);
+            MoveTo(destination, speedFraction);
+        }
+
+        public void MoveTo(Vector3 destination, float speedFraction)
+        {
+            navMeshAgent.destination = destination;
+            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            navMeshAgent.isStopped = false;
+        }
+
+        public void Cancel()
+        {
+            navMeshAgent.isStopped = true;
         }
 
         public object CaptureState()
@@ -82,7 +87,7 @@ namespace RPG.Movement
             var position = (SerializableVector3)data["position"];
             var rotation = (SerializableVector3)data["rotation"];
 
-            GetComponent<NavMeshAgent>().Warp(position.ToVector());
+            navMeshAgent.Warp(position.ToVector());
             transform.eulerAngles = rotation.ToVector();
         }
 
