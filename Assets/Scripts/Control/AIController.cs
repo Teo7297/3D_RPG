@@ -75,8 +75,9 @@ namespace RPG.Control
 
         private void UpdateTimers()
         {
-            timeSinceLastSawPlayer += Time.deltaTime;
-            timeSinceArrivedAtWaypoint += Time.deltaTime;
+            var deltaTime = Time.deltaTime;
+            timeSinceLastSawPlayer += deltaTime;
+            timeSinceArrivedAtWaypoint += deltaTime;
         }
 
         private void PatrolBehaviour()
