@@ -73,6 +73,8 @@
      <Compile Include="Assets\Scripts\Combat\EnemyHealthDisplay.cs" />
      <Compile Include="Assets\Scripts\Stats\ExpDisplay.cs" />
      <Compile Include="Assets\Scripts\Combat\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Control\IRaycastable.cs" />
+     <Compile Include="Assets\Scripts\Control\CursorType.cs" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Asset Packs\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\Asset Packs\Fantasy Skybox FREE\Readme.txt" />

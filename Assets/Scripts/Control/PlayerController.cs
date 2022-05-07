@@ -3,6 +3,8 @@ using RPG.Attributes;
 using RPG.Movement;
 using RPG.Combat;
 using System;
+using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -11,16 +13,11 @@ namespace RPG.Control
 
         [SerializeField]
         private CursorMapping[] cursorMappings;
+        [SerializeField]
+        private float maxNavMeshProjectionDistance = 1f;
 
         private Health health;
-        
 
-        enum CursorType
-        {
-            None,
-            Movement,
-            Combat
-        }
 
         [Serializable]
         struct CursorMapping
@@ -37,50 +34,98 @@ namespace RPG.Control
 
         void Update()
         {
-            if (health.IsDead()) { return; }
-            if (InteractWithCombat()) { return; } //if we can attack we don't move
+            if (InteractWithUI()) { return; }
+            if (health.IsDead())
+            {
+                SetCursorType(CursorType.None);
+                return;
+            }
+            if (InteractWithComponent()) { return; }
             if (InteractWithMovement()) { return; }
             //If we are here we are hovering the mouse over the void
 
             SetCursorType(CursorType.None);
         }
 
-        private bool InteractWithCombat()
+        private bool InteractWithUI()
         {
-            //Returns an array of all the items the ray hits
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (RaycastHit hit in hits)
+            if (EventSystem.current.IsPointerOverGameObject()) //! This refers to UI gameobjects!!
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (target is null) { continue; }
-
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) { continue; }
-
-                if (Input.GetMouseButton(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);
-                }
-                SetCursorType(CursorType.Combat);
-                //we want to NOT move even when only hovering over an enemy
+                SetCursorType(CursorType.UI);
                 return true;
             }
             return false;
         }
 
+        private bool InteractWithComponent()
+        {
+            //? RaycastAll returns hits in non predictable order
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (var raycastable in raycastables)
+                {
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursorType(raycastable.GetCursorType());
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private RaycastHit[] SortRaycastAll()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            float[] distances = new float[hits.Length];
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+            return hits;
+        }
+
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            Vector3 target;
+            bool hasHit = RaycastNavmesh(out target);
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursorType(CursorType.Movement);
                 return true;
             }
             return false;
+        }
+
+        private bool RaycastNavmesh(out Vector3 target)
+        {
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            if (!hasHit)
+            {
+                target = new Vector3();
+                return false;
+            }
+
+            NavMeshHit navMeshHit;
+            var hasCastToNavMesh = NavMesh.SamplePosition(hit.point,
+                                                          out navMeshHit,
+                                                          maxNavMeshProjectionDistance,
+                                                          NavMesh.AllAreas);
+            if(!hasCastToNavMesh)
+            {
+                target = new Vector3();
+                return false;
+            }
+            target = navMeshHit.position;
+            return true;
         }
 
         private void SetCursorType(CursorType type)
@@ -93,7 +138,7 @@ namespace RPG.Control
         {
             foreach (var mapping in cursorMappings)
             {
-                if(mapping.type == type)
+                if (mapping.type == type)
                 {
                     return mapping;
                 }
