@@ -1355,7 +1355,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003534071}
-  m_LocalRotation: {x: -0.06302309, y: 0.86300075, z: -0.11128239, w: -0.48874742}
+  m_LocalRotation: {x: -0.06302308, y: 0.86300075, z: -0.11128238, w: -0.48874742}
   m_LocalPosition: {x: -5.87, y: 4.64, z: 15.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1565,7 +1565,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 995275053649221417, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
   m_PrefabInstance: {fileID: 6988897525549543512}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1459297287}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
@@ -1702,6 +1702,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2412311180477606675, guid: 8899ebc62e38b394aab67880671629b7, type: 3}
   m_PrefabInstance: {fileID: 694568829}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1459297287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 995275053649221419, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
+  m_PrefabInstance: {fileID: 6988897525549543512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1459297288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459297287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1499309309
 PrefabInstance:
   m_ObjectHideFlags: 0
