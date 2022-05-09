@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3441108880858945887, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441108880858945887, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441108880858945887, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
       objectReference: {fileID: 0}
@@ -62,6 +70,34 @@ PrefabInstance:
     - target: {fileID: 7335829314088756565, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Autodestruct
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.4459083
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
+      value: 0.85293907
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.06411326
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.09401888
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015750841018285823, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].value
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4074b7df16e21842afdcdff5ed1418f, type: 3}

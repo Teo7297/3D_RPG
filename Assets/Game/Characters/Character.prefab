@@ -36,7 +36,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5957721704209534719}
   - {fileID: 4103385743733666828}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,7 +109,7 @@ NavMeshAgent:
   m_ObstacleAvoidanceType: 4
 --- !u!95 &5668656069388749831
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,6 +122,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -167,7 +171,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6437927069968616295}
         m_TargetAssemblyTypeName: RPG.UI.DamageText.DamageTextSpawner, Assembly-CSharp
         m_MethodName: Spawn
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -245,7 +249,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2383226730184706050, guid: 869415c801f10f84599867c4cbfb2d48, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2383226730184706050, guid: 869415c801f10f84599867c4cbfb2d48, type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2383226730184706050, guid: 869415c801f10f84599867c4cbfb2d48, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 2383226730184706050, guid: 869415c801f10f84599867c4cbfb2d48, type: 3}
       propertyPath: m_LocalPosition.z
@@ -309,3 +313,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e55016967a1db418716831232b487b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &5585249600475691549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 116574667226593565}
+    m_Modifications:
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451255460895298065, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_Name
+      value: Health Bar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+--- !u!4 &5957721704209534719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+  m_PrefabInstance: {fileID: 5585249600475691549}
+  m_PrefabAsset: {fileID: 0}

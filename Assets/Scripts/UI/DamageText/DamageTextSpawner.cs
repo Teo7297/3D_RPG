@@ -10,7 +10,10 @@ namespace RPG.UI.DamageText
 
         public void Spawn(float damageAmount)
         {
-            var dmgTextInstance = Instantiate<DamageText>(damageTextPrefab, transform);
+            var x = Random.Range(-.3f, .3f) + transform.position.x;
+            var y = Random.Range(-.3f, .3f) + transform.position.y;
+            var dmgTextInstance = Instantiate<DamageText>(damageTextPrefab, new Vector3(x, y, transform.position.z), Quaternion.identity, transform);
+            dmgTextInstance.SetValue(damageAmount);
         }
     }
 }
