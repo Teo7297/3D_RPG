@@ -15,6 +15,8 @@ namespace RPG.Control
         private CursorMapping[] cursorMappings;
         [SerializeField]
         private float maxNavMeshProjectionDistance = 1f;
+        [SerializeField]
+        private float maxNavPathLength = 40f;
 
         private Health health;
 
@@ -119,13 +121,35 @@ namespace RPG.Control
                                                           out navMeshHit,
                                                           maxNavMeshProjectionDistance,
                                                           NavMesh.AllAreas);
-            if(!hasCastToNavMesh)
+            if (!hasCastToNavMesh)
             {
                 target = new Vector3();
                 return false;
             }
             target = navMeshHit.position;
+
+            // calculate path and return false if too long
+            NavMeshPath path = new NavMeshPath();
+            //! path passed by ref and modified inside CalculatePath
+            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+            if (!hasPath) { return false; }
+            if (path.status != NavMeshPathStatus.PathComplete) { return false; }  //! this disables unreachable zones paths
+
+            if (GetPathLength(path) > maxNavPathLength) { return false; }
+
             return true;
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            var total = 0f;
+            if (path.corners.Length < 2) { return total; }
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+
+            return total;
         }
 
         private void SetCursorType(CursorType type)

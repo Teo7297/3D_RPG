@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Attributes
 {
@@ -12,6 +13,8 @@ namespace RPG.Attributes
 
         [SerializeField]
         private float regenerationPercentage = 70f;
+        [SerializeField]
+        private UnityEvent takeDamage;
 
         private LazyValue<float> healthPoints;
 
@@ -49,9 +52,10 @@ namespace RPG.Attributes
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            print(gameObject.name + " took damage: " + damage);
-
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+            
+            takeDamage.Invoke();
+
             CheckIfShouldDie();
             if (IsDead())
                 AwardExperience(instigator);
