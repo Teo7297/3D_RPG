@@ -10,7 +10,7 @@ namespace RPG.Attributes
         private Canvas canvas;
         private Health health;
 
-        private void Start()
+        private void Awake()
         {
             health = GetComponentInParent<Health>();
         }
