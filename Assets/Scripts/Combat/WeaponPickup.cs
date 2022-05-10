@@ -7,13 +7,13 @@ namespace RPG.Combat
     public class WeaponPickup : MonoBehaviour, IRaycastable
     {
         [SerializeField]
-        private Weapon weapon;
+        private WeaponConfig weapon;
         [SerializeField]
         private float respawnTime = 5f;
 
         public bool HandleRaycast(PlayerController callingController)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 PickUp(callingController.GetComponent<Fighter>());
             }

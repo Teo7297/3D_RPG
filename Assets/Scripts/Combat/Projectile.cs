@@ -1,5 +1,6 @@
 using RPG.Attributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -13,6 +14,8 @@ namespace RPG.Combat
         private bool shouldChaseTarget = false;
         [SerializeField]
         private GameObject hitEffect;
+        [SerializeField]
+        private UnityEvent onHit;
 
         private Health target;
 
@@ -106,6 +109,7 @@ namespace RPG.Combat
         private void HitTarget()
         {
             target.TakeDamage(instigator, damage);
+            onHit.Invoke();
 
             DestroyHead();
 
