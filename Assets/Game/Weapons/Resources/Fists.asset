@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5258e66a974ad4a4e91f03ec293dd3dc, type: 3}
   m_Name: Fists
   m_EditorClassIdentifier: 
-  equippedWeaponPrefab: {fileID: 0}
+  equippedWeaponPrefab: {fileID: 3176709474311712173, guid: af7b65e2777b3df42b8e17b1859e0443, type: 3}
   animatorOverrideController: {fileID: 0}
   weaponDamage: 5
   percentageBonus: 0
