@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5.66
+  maxNavPathLength: 40
 --- !u!114 &5668656069388749837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +638,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 116574667226593565}
     m_Modifications:
+    - target: {fileID: 1078705764681999358, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2246415197754733794, guid: 91881d1f390ed354e9657dfebff23da8, type: 3}
       propertyPath: m_RootOrder
       value: 0

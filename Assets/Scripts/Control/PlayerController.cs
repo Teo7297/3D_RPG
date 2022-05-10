@@ -16,7 +16,8 @@ namespace RPG.Control
         [SerializeField]
         private float maxNavMeshProjectionDistance = 1f;
         [SerializeField]
-        private float maxNavPathLength = 40f;
+        private float raycastRadius = 1f;
+
 
         private Health health;
 
@@ -62,7 +63,8 @@ namespace RPG.Control
         private bool InteractWithComponent()
         {
             //? RaycastAll returns hits in non predictable order
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+
+            RaycastHit[] hits = SortRaycastAll();
             foreach (RaycastHit hit in hits)
             {
                 IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
@@ -80,7 +82,7 @@ namespace RPG.Control
 
         private RaycastHit[] SortRaycastAll()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
             float[] distances = new float[hits.Length];
             for (int i = 0; i < hits.Length; i++)
             {
@@ -96,6 +98,8 @@ namespace RPG.Control
             bool hasHit = RaycastNavmesh(out target);
             if (hasHit)
             {
+                if (!GetComponent<Mover>().CanMoveTo(target)) { return false; }
+
                 if (Input.GetMouseButton(0))
                 {
                     GetComponent<Mover>().StartMoveAction(target, 1f);
@@ -128,29 +132,10 @@ namespace RPG.Control
             }
             target = navMeshHit.position;
 
-            // calculate path and return false if too long
-            NavMeshPath path = new NavMeshPath();
-            //! path passed by ref and modified inside CalculatePath
-            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-            if (!hasPath) { return false; }
-            if (path.status != NavMeshPathStatus.PathComplete) { return false; }  //! this disables unreachable zones paths
-
-            if (GetPathLength(path) > maxNavPathLength) { return false; }
-
             return true;
         }
 
-        private float GetPathLength(NavMeshPath path)
-        {
-            var total = 0f;
-            if (path.corners.Length < 2) { return total; }
-            for (int i = 0; i < path.corners.Length - 1; i++)
-            {
-                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
-            }
 
-            return total;
-        }
 
         private void SetCursorType(CursorType type)
         {

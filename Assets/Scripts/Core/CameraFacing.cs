@@ -7,6 +7,7 @@ namespace RPG.Core
         private void LateUpdate()
         {
             transform.forward = Camera.main.transform.forward;
+            transform.rotation = Camera.main.transform.rotation;
         }
     }
 }

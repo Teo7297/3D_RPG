@@ -4,6 +4,7 @@ using RPG.Attributes;
 using RPG.Movement;
 using UnityEngine;
 using GameDevTV.Utils;
+using System;
 
 namespace RPG.Control
 {
@@ -14,6 +15,8 @@ namespace RPG.Control
         [SerializeField]
         private float suspicionTime = 3f;
         [SerializeField]
+        private float aggroCooldownTime = 3f;
+        [SerializeField]
         private PatrolPath patrolPath;
         [SerializeField]
         private float waypointTolerance = 1f;
@@ -22,6 +25,8 @@ namespace RPG.Control
         [SerializeField]
         [Range(0, 1)]
         private float patrolSpeedFraction = .2f;
+        [SerializeField]
+        private float shoutDistance = 10f;
 
         private Fighter fighter;
         private GameObject player;
@@ -31,6 +36,8 @@ namespace RPG.Control
         private LazyValue<Vector3> guardPosition;
         private float timeSinceLastSawPlayer = Mathf.Infinity;
         private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        private float timeSinceAggravated = Mathf.Infinity;
+
         private int currentWaypointIndex = 0;
 
         private void Awake()
@@ -52,7 +59,7 @@ namespace RPG.Control
         {
             if (health.IsDead()) { return; }
 
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
+            if (IsAggravated() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
             }
@@ -68,6 +75,12 @@ namespace RPG.Control
             UpdateTimers();
         }
 
+        // Called from enemy unityEvent onTakeDamage
+        public void Aggravate()
+        {
+            timeSinceAggravated = 0f;
+        }
+
         private Vector3 GetGuardPosition()
         {
             return transform.position;
@@ -78,6 +91,7 @@ namespace RPG.Control
             var deltaTime = Time.deltaTime;
             timeSinceLastSawPlayer += deltaTime;
             timeSinceArrivedAtWaypoint += deltaTime;
+            timeSinceAggravated += deltaTime;
         }
 
         private void PatrolBehaviour()
@@ -123,11 +137,31 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+
+            AggravateNearbyEnemies();
         }
 
-        private bool InAttackRangeOfPlayer()
+        private void AggravateNearbyEnemies()
         {
-            return Vector3.Distance(transform.position, player.transform.position) <= chaseDistance;
+            //? Spherecast is the same as ray but shoots a sphere
+
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            foreach (var hit in hits)
+            {
+                print(hit.transform);
+                var aiController = hit.transform.GetComponent<AIController>();
+                if (aiController is null) { continue; }
+
+                aiController.Aggravate();
+            }
+        }
+
+        private bool IsAggravated()
+        {
+            var distance = Vector3.Distance(transform.position, player.transform.position);
+            return
+                distance <= chaseDistance ||
+                timeSinceAggravated <= aggroCooldownTime;
         }
 
         //Called by Unity
