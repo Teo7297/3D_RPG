@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43726084, g: 0.75450844, b: 1.0290486, a: 1}
+  m_IndirectSpecularColor: {r: 0.43718317, g: 0.75444984, b: 1.0290304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7102575580227502166, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.900024
+      objectReference: {fileID: 0}
     - target: {fileID: 8308404971914573625, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.794704
@@ -268,6 +272,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
+--- !u!1 &440221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6988897525623506971, guid: 96288fafedac2b94b83a9babe47f4bf8, type: 3}
+  m_PrefabInstance: {fileID: 440220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &440222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &275806429
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,8 +349,9 @@ Terrain:
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -340,6 +370,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -44.717968, y: -10.549694, z: 1.362278}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1205682213}
   m_RootOrder: 0
@@ -407,6 +438,10 @@ PrefabInstance:
       propertyPath: destination
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8248289585815981116, guid: 3395bc8819afdc94eaf86f2eb321d95a, type: 3}
+      propertyPath: sceneToLoad
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3395bc8819afdc94eaf86f2eb321d95a, type: 3}
 --- !u!1 &1205682212
@@ -435,6 +470,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.282031, y: 10.549694, z: -51.362278}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 275806432}
   m_Father: {fileID: 0}
@@ -497,6 +533,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248289585815981116, guid: 3395bc8819afdc94eaf86f2eb321d95a, type: 3}
       propertyPath: SceneToLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248289585815981116, guid: 3395bc8819afdc94eaf86f2eb321d95a, type: 3}
+      propertyPath: sceneToLoad
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
